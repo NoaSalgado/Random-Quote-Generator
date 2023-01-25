@@ -11,6 +11,11 @@ let quotes = [];
 // Functionality
 const showNewQuote = () => {
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  quote.text.length > 200
+    ? quoteText.classList.add('quote__text--long')
+    : quoteText.classList.remove('quote__text--long');
+
   quoteText.textContent = quote.text;
   quoteAuthor.textContent = quote.author;
 };
