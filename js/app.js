@@ -2,7 +2,7 @@
 const quoteCointainer = document.querySelector('#quote-cointainer');
 const quoteText = document.querySelector('#quote');
 const quoteAuthor = document.querySelector('#author');
-const twitterBtn = document.querySelector('twitter');
+const twitterBtn = document.querySelector('#twitter');
 const newQuoteBtn = document.querySelector('#new-quote');
 
 // Global Variables
@@ -26,3 +26,12 @@ const getQuotesFromAPI = (async () => {
     console.log(error);
   }
 })();
+
+const sendToTwitter = () => {
+  const twitterURL = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${quoteAuthor.textContent}`;
+  window.open(twitterURL, '_blank');
+};
+
+// Event listeners
+twitterBtn.addEventListener('click', sendToTwitter);
+newQuoteBtn.addEventListener('click', showNewQuote);
