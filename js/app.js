@@ -1,15 +1,31 @@
 // DOM Elements
-const quoteCointainer = document.querySelector('#quote-cointainer');
+const quoteContainer = document.querySelector('#quote-container');
 const quoteText = document.querySelector('#quote');
 const quoteAuthor = document.querySelector('#author');
 const twitterBtn = document.querySelector('#twitter');
 const newQuoteBtn = document.querySelector('#new-quote');
+const loader = document.querySelector('#loader');
+console.log(loader);
 
 // Global Variables
 let quotes = [];
 
 // Functionality
+const showLoader = () => {
+  quoteContainer.classList.add('hidden');
+  loader.hidden = false;
+  console.log(quoteContainer.hidden);
+};
+
+showLoader();
+
+const hideLoader = () => {
+  loader.hidden = true;
+  quoteContainer.classList.remove('hidden');
+};
+
 const showNewQuote = () => {
+  showLoader();
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   quote.text.length > 200
@@ -18,9 +34,11 @@ const showNewQuote = () => {
 
   quoteText.textContent = quote.text;
   quoteAuthor.textContent = quote.author;
+  hideLoader();
 };
 
 const getQuotesFromAPI = (async () => {
+  showLoader();
   const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
 
   try {

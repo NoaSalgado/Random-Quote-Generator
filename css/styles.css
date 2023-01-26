@@ -50,13 +50,19 @@ body {
 .quote-container {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 0.5rem;
-  width: 90%;
+  width: auto;
+  max-width: 90rem;
   padding: 4rem;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.7);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 3rem;
+}
+
+.quote-container.hidden {
+  display: none;
 }
 
 .fa-quote-left,
@@ -114,6 +120,24 @@ body {
 
 .btn--new-quote:hover {
   background-color: rgba(52, 58, 64, 0.9);
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #343a40;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media only screen and(max-width: 30rem) {
